@@ -8,7 +8,7 @@ public class RadioTest {
     // station tests
     @Test
     void stationNext() {
-        Radio radio = new Radio(); // station by default = 0
+        Radio radio = new Radio(); // station by default = 0 - default constructor with 10 stations
         radio.next();
         int expected = 1;
         int actual = radio.getStation();
@@ -17,9 +17,10 @@ public class RadioTest {
     }
 
     @Test
-    void stationNextMoreThanNine() {
-        Radio radio = new Radio(); // station by default = 0
-        radio.setStation(9);
+    void stationNextMoreThanNumber() {
+        int number = 10;
+        Radio radio = new Radio(number); // station by default = 0
+        radio.setStation(number - 1);
         radio.next();
         int expected = 0;
         int actual = radio.getStation();
@@ -40,10 +41,11 @@ public class RadioTest {
 
     @Test
     void stationPrevLessThanZero() {
-        Radio radio = new Radio(); // station by default = 0
+        int number = 15;
+        Radio radio = new Radio(15); // station by default = 0
         radio.setStation(0);
         radio.prev();
-        int expected = 9;
+        int expected = number - 1;
         int actual = radio.getStation();
 
         assertEquals(expected, actual);
@@ -70,9 +72,10 @@ public class RadioTest {
     }
 
     @Test
-    void stationSetMoreThanNine() {
-        Radio radio = new Radio(); // station by default = 0
-        radio.setStation(10);
+    void stationSetMoreThanNumber() {
+        int number = 99;
+        Radio radio = new Radio(number); // station by default = 0
+        radio.setStation(number);
         int expected = 0;
         int actual = radio.getStation();
 
@@ -102,13 +105,13 @@ public class RadioTest {
     }
 
     @Test
-    void volumePlusMoreThanTen() {
+    void volumePlusMoreThanHundred() {
         Radio radio = new Radio(); // volume by default = 0
-        for (int i = 0; i <= 9; i++) {
+        for (int i = 0; i <= 99; i++) {
             radio.volumePlus(); // press "+" 10 times, set volume = 10
         } // volume=10
         radio.volumePlus();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getVolume();
 
         assertEquals(expected, actual);
