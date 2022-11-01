@@ -2,6 +2,10 @@ package ru.netology.RadioMan;
 
 public class Radio {
 
+    private int numberOfStations;
+    private int station = 0; //в пределах от 0 до 9. Default = 0
+    private int volume = 0; //в пределах от 0 до 10. Default = 0
+
     public Radio() { // default constructor with default number of stations=10
         this.numberOfStations = 10;
     }
@@ -9,10 +13,6 @@ public class Radio {
     public Radio(int numberOfStations) { // constructor with number of stations in the parameter
         this.numberOfStations = numberOfStations;
     }
-
-    private int numberOfStations;
-    private int station = 0; //в пределах от 0 до 9. Default = 0
-    private int volume = 0; //в пределах от 0 до 10. Default = 0
 
     // getters
     public int getStation() {
